@@ -5,6 +5,6 @@ public class OrderCalculator {
             throw new IllegalArgumentException("order/strategy must not be null");
         // TODO (2c): ใช้ strategy คำนวณราคาสุดท้ายแล้วคืนค่า
         //   hint: strategy.applyDiscount(order)
-        return /* ====== replace this ====== */ order.getTotalPrice();
+        return strategy.applyDiscount(order);
     }
 }

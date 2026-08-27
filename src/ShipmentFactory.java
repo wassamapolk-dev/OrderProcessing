@@ -1,19 +1,14 @@
-/** FACTORY (Part 3): จุดเดียวที่รู้จัก concrete Shipment ทุกชนิด */
 public class ShipmentFactory {
-    /**
-     *   createShipment("STANDARD") -> StandardShipment
-     *   createShipment("EXPRESS")  -> ExpressShipment
-     *   unknown type -> IllegalArgumentException
-     */
+    
     public Shipment createShipment(String type) {
-        if (type == null) throw new IllegalArgumentException("type must not be null");
+        if (type == null || type.trim().isEmpty()) {
+            throw new IllegalArgumentException("Type must not be null or empty");
+        }
+        
         return switch (type.toUpperCase()) {
-            // TODO (3a): "STANDARD" -> คืน new StandardShipment()
-            // TODO (3b): "EXPRESS"  -> คืน new ExpressShipment()
-            //   hint: case "STANDARD" -> new StandardShipment();
-            /* ====== fill in the two cases here ====== */
-            // TODO (3c): type อื่น -> throw IllegalArgumentException("unknown shipment type: " + type)
-            default -> /* ====== replace this ====== */ null;
+            case "STANDARD" -> new StandardShipment();
+            case "EXPRESS" -> new ExpressShipment();
+            default -> throw new IllegalArgumentException("Unknown shipment type: " + type);
         };
     }
 }
